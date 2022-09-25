@@ -20,7 +20,7 @@ public class SquareCalculator implements Callable<Integer> {
                 .findFirst()
                 .getAsInt());
         int num = inputNumber * inputNumber;
-        System.out.println("\nРезультат умножения числа " + inputNumber + " = " + num);
+        System.out.println("\nКвадрат числа " + inputNumber + " равен " + num);
         return null;
     }
 }
