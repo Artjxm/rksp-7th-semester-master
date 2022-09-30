@@ -11,6 +11,7 @@ public class Main {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         int amount = 30;
         ArrayDeque<File> queue = new ArrayDeque<>();
+
         FileGenerator fileGenerator = new FileGenerator();
         FileProcessor fileProcessorXML = new FileProcessor("XML");
         FileProcessor fileProcessorJSON = new FileProcessor("JSON");
@@ -19,7 +20,9 @@ public class Main {
                 fileProcessorXML,
                 fileProcessorJSON,
                 fileProcessorXLS };
+
         Future<Boolean> future = fileGenerator.generate(queue, amount);
+
         executor.submit(() -> {
             while (!future.isDone() || !queue.isEmpty()) {
                 if (!queue.isEmpty()) {
@@ -32,6 +35,7 @@ public class Main {
                 }
             }
         });
+
         fileGenerator.executor.shutdown();
         executor.shutdown();
         while ((fileProcessorXML.counter + fileProcessorJSON.counter + fileProcessorXLS.counter) != amount) {

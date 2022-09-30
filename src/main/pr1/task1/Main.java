@@ -6,6 +6,7 @@ public class Main {
     static Random random = new Random();
 
     public static void main(String[] args)  {
+        System.out.println("Замеры начались\n");
         int[] array = random.ints(
                 10000,
                 0,
@@ -22,3 +23,4 @@ public class Main {
         Function2.execute(array);
     }
 }
+
